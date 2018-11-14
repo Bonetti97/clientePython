@@ -1,4 +1,3 @@
-import logging
 from suds.client import Client
 import comic
 
