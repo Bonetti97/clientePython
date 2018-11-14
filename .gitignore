@@ -15,6 +15,7 @@ local.properties
 .settings/
 .loadpath
 .recommenders
+src/*.pyc
 
 # External tool builders
 .externalToolBuilders/
