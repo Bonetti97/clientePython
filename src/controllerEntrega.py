@@ -1,5 +1,5 @@
 from suds.client import Client
-import comic
+import entrega
 
 
 
@@ -9,16 +9,16 @@ class ControllerEntrega(object):
     client = Client(wsdl)
     client.options.cache.clear()
     
-    def findEntregaById(self, idComic):
-        c = self.client.service.findEntregaById();
-        if c:
-            cam = comic.Comic(c['idComic'],c['nombre'],c['descripcion'],c['fechaCreacion'])
-            return cam
+    def findEntrega(self, idEnt):
+        e = self.client.service.find(idEnt);
+        if e:
+            en = entrega.Entrega(e['idEntrega'],e['nombre'],e['archivo'],e['fechaCreacion'],e['idComic'])
+            return en
         else:
             return None
 
-    def addComic(self,nombre,descripcion):
-        self.client.service.addComic(nombre,descripcion)
-    def deleteComic(self,comic):
-        self.client.service.remove(comic)
-    def editComic(self, comic, nuevoNombre,nuevaDescripcion):
+    def addEntrega(self,nombre,archivo,idComic):
+        self.client.service.addEntrega(self,nombre,archivo,idComic)
+    def deleteEntrega(self,entrega):
+        self.client.service.remove(entrega)
+    def editEntrega(self, entrega, nuevoNombre):
