@@ -32,6 +32,7 @@
                 <td>{{ comic.descripcion }}</td>
                 <td>{{ comic.fechaCreacion.strftime('%Y-%m-%d') }}</td>
                 <td><a class="btn btn-warning" href="/editarComic/{{ comic.idComic }}">Editar </a></td>
+                 <td> <a class="btn btn-danger" href ="/delete/{{ comic.idComic }}">Eliminar</a></td>
             </tr>
             {% endfor %}
             </tbody>

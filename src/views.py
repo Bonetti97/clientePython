@@ -52,6 +52,9 @@ class EditComic(BaseHandler):
 class DeleteComic(BaseHandler):
     def get(self, comicID):
         co = Controller().findComicById(int(comicID))
+        print co.nombre
+        print co.descripcion
+        print co.idComic
         Controller().deleteComic(co)
         return webapp2.redirect('/')
         
