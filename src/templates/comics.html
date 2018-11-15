@@ -8,8 +8,12 @@
     </div>
 </div>
 <br/>
-<a class="btn btn-primary" href="/newComic">
-    Crear comic
+
+ <form class="form-horizontal" role="form" action="/newComic" method="get">
+
+                        <button class="btn btn-warning">Crear Comic </button><hr/>
+                    </form>
+
     <span style="margin-left: 5px;" class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
 </a>
 <br/>
@@ -19,7 +23,26 @@
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
-                        <td><a class="btn btn-warning" href="/ordenAlfabetico">Orden Alfabetico </a></td>
+        <form class="form-horizontal" role="form" action="/ordenAlfabetico" method="get">
+
+                        <button class="btn btn-warning">Orden Alfabetico </button><hr/>
+                    </form>
+      
+               
+<form class="form-horizontal" role="form" action="/buscarNombre" method="get">
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" name="busquedaNombre" id="busquedaNombre"
+                           placeholder="nombre">
+                </div>
+                <button type="submit" value="submit" class="btn btn-warning" >Buscar por Nombre</button>
+
+        </form>
+
+                        <form class="form-horizontal" role="form" action="/ordenFecha" method="get">
+
+
+                        <button class="btn btn-warning">Orden Fecha </button>
+                                </form>
 
         <table class="table">
             <thead>

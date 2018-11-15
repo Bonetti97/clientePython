@@ -39,4 +39,22 @@ class Controller(object):
             comi = comic.Comic(lista[i]['idComic'],lista[i]['nombre'],lista[i]['descripcion'],lista[i]['fechaCreacion'])
             aux.append(comi)
         return aux
+    
+    def listaFecha(self):
+        aux=[]
+        lista=self.client.service.encontrarPorFecha();
+        for i in range(len(lista)):
+            comi = comic.Comic(lista[i]['idComic'],lista[i]['nombre'],lista[i]['descripcion'],lista[i]['fechaCreacion'])
+            aux.append(comi)
+        return aux
+    
+    def listaNombre(self,nombre):
+        aux=[]
+        lista=self.client.service.buscarNombre(nombre);
+        for i in range(len(lista)):
+            comi = comic.Comic(lista[i]['idComic'],lista[i]['nombre'],lista[i]['descripcion'],lista[i]['fechaCreacion'])
+            aux.append(comi)
+        return aux
+    
+    
         

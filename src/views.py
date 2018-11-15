@@ -58,6 +58,17 @@ class OrdenAlfabetico(BaseHandler):
     def get(self):
         cos=Controller().listaOrden()
         self.render_template('comics.html', {'listaComic': cos})
+        
+class OrdenFecha(BaseHandler):
+    def get(self):
+        cos=Controller().listaFecha()
+        self.render_template('comics.html', {'listaComic': cos})
+        
+class BuscarNombre(BaseHandler):
+    def get(self):
+        nombre = self.request.get('busquedaNombre')
+        cos=Controller().listaNombre(nombre)
+        self.render_template('comics.html', {'listaComic': cos})
 
         
         

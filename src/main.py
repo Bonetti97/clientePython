@@ -7,7 +7,9 @@ app = webapp2.WSGIApplication([
         ('/newComic',views.AddComic), 
         ('/editarComic/([\d]+)', views.EditComic),
         ('/delete/([\d]+)', views.DeleteComic),
-        ('/ordenAlfabetico',views.OrdenAlfabetico)
+        ('/ordenAlfabetico',views.OrdenAlfabetico),
+        ('/ordenFecha',views.OrdenFecha),
+        ('/buscarNombre', views.BuscarNombre)
         ],
         debug=True)
 
