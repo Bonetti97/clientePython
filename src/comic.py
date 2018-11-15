@@ -5,6 +5,8 @@ class Comic(object):
         self.nombre = nombre
         self.descripcion = descripcion
         self.fechaCreacion = fechaCreacion
+        self.listaEntrega=[]
+        
     def comoArray(self):
         return {
             'idComic':str(self.idComic),

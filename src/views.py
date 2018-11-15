@@ -76,6 +76,12 @@ class BuscarFechaMayor(BaseHandler):
         print fecha
         cos=Controller().listaFechaMayor(fecha)
         self.render_template('comics.html', {'listaComic': cos})
+        
+class OrdenEntregas(BaseHandler):
+    def get(self):
+        cos=Controller().listaNumEntregas();
+        self.render_template('comics.html', {'listaComic': cos})
+
 
         
         

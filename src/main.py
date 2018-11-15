@@ -10,7 +10,8 @@ app = webapp2.WSGIApplication([
         ('/ordenAlfabetico',views.OrdenAlfabetico),
         ('/ordenFecha',views.OrdenFecha),
         ('/buscarNombre', views.BuscarNombre),
-        ('/buscarFechaMayor', views.BuscarFechaMayor)
+        ('/buscarFechaMayor', views.BuscarFechaMayor),
+        ('/buscarNumEntregas', views.OrdenEntregas)
         ],
         debug=True)
 

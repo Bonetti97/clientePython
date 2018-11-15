@@ -64,5 +64,22 @@ class Controller(object):
             aux.append(comi)
         return aux
     
+    def listaNumEntregas(self):
+        aux=[]
+        lista=self.client.service.buscarPorNumEntrega();
+        for i in range(len(lista)):
+            comi = comic.Comic(lista[i]['idComic'],lista[i]['nombre'],lista[i]['descripcion'],lista[i]['fechaCreacion'])
+            aux.append(comi)
+        return aux
+    
+    def getEntregasComic(self,comic):
+        aux=[]
+        lista=self.client.service.getEntregasComic(comic);
+        for i in range(len(lista)):
+            comi = comic.Comic(lista[i]['idComic'],lista[i]['nombre'],lista[i]['descripcion'],lista[i]['fechaCreacion'])
+            aux.append(comi)
+        return aux
+        
+    
     
         
