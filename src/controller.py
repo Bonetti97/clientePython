@@ -31,4 +31,12 @@ class Controller(object):
             comi = comic.Comic(lista[i]['idComic'],lista[i]['nombre'],lista[i]['descripcion'],lista[i]['fechaCreacion'])
             listaComics.append(comi)
         return listaComics
+    
+    def listaOrden(self):
+        aux=[]
+        lista=self.client.service.encontrarPorNombreAlfabetico();
+        for i in range(len(lista)):
+            comi = comic.Comic(lista[i]['idComic'],lista[i]['nombre'],lista[i]['descripcion'],lista[i]['fechaCreacion'])
+            aux.append(comi)
+        return aux
         

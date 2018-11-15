@@ -53,6 +53,12 @@ class DeleteComic(BaseHandler):
     def get(self, comicID):
         Controller().deleteComic(comicID)
         return webapp2.redirect('/')
+    
+class OrdenAlfabetico(BaseHandler):
+    def get(self):
+        cos=Controller().listaOrden()
+        self.render_template('comics.html', {'listaComic': cos})
+
         
         
         
