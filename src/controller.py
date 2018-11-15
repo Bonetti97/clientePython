@@ -7,6 +7,7 @@ class Controller(object):
     
     wsdl = 'http://localhost:8080/HumilArt/ComicWebService?WSDL'
     client = Client(wsdl)
+    client.options.cache.clear()
 
     def findComicById(self, idComic):
         c = self.client.service.findComicById(idComic)
