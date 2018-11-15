@@ -1,11 +1,12 @@
 import datetime
+from controller import Controller
 class Comic(object):
     def __init__(self, id, nombre, descripcion, fechaCreacion):
         self.idComic = id
         self.nombre = nombre
         self.descripcion = descripcion
         self.fechaCreacion = fechaCreacion
-        self.listaEntrega=[]
+        self.listaEntrega=Controller().getEntregasComic(id)
         
     def comoArray(self):
         return {
