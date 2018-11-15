@@ -9,7 +9,7 @@ class Controller(object):
     client = Client(wsdl)
 
     def findComicById(self, idComic):
-        c = self.client.service.finComicById(idComic)
+        c = self.client.service.findComicById(idComic)
         if c:
             cam = comic.Comic(c['idComic'],c['nombre'],c['descripcion'],c['fechaCreacion'])
             return cam

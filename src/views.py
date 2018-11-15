@@ -44,10 +44,9 @@ class EditComic(BaseHandler):
         self.render_template('editarComic.html', {'comic': co})
         
     def post(self,comicID):
-        co = Controller().findComicById(int(comicID))
         nombre = self.request.get('nombreComic')
         descripcion = self.request.get('descripcionComic')
-        Controller().editComic(co, nombre, descripcion)
+        Controller().editComic(comicID, nombre, descripcion)
         return webapp2.redirect('/')
 
 class DeleteComic(BaseHandler):

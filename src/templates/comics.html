@@ -31,7 +31,7 @@
                 <td>{{ comic.nombre }}</td>
                 <td>{{ comic.descripcion }}</td>
                 <td>{{ comic.fechaCreacion.strftime('%Y-%m-%d') }}</td>
-                <td><a class="btn btn-warning" href="/edit/{{ comic.idComic }}">Editar </a></td>
+                <td><a class="btn btn-warning" href="/editarComic/{{ comic.idComic }}">Editar </a></td>
             </tr>
             {% endfor %}
             </tbody>
@@ -44,7 +44,7 @@
     <div class="col-lg-12 text-center">
         <div class="col-md-3"></div>
         <div class="col-md-6 bg-warning warning_mesagge">
-            <label>No existen anuncios todav&iacute;a.</label>
+            <label>No existen comics todav&iacute;a.</label>
         </div>
         <div class="col-md-3"></div>
 
