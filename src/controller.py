@@ -1,5 +1,6 @@
 from suds.client import Client
 import comic
+import entrega
 
 
 
@@ -76,8 +77,8 @@ class Controller(object):
         aux=[]
         lista=self.client.service.getEntregasComic(comic);
         for i in range(len(lista)):
-            comi = comic.Comic(lista[i]['idComic'],lista[i]['nombre'],lista[i]['descripcion'],lista[i]['fechaCreacion'])
-            aux.append(comi)
+            entregas=entrega.Entrega(lista[i]['idEntrega'],lista[i]['nombre'],lista[i]['archivo'],lista[i]['fechaCreacion'],lista[i]['idComic'])
+            aux.append(entregas)
         return aux
         
     
