@@ -56,5 +56,13 @@ class Controller(object):
             aux.append(comi)
         return aux
     
+    def listaFechaMayor(self,fecha):
+        aux=[]
+        lista=self.client.service.buscarPorFechaMayor(fecha);
+        for i in range(len(lista)):
+            comi = comic.Comic(lista[i]['idComic'],lista[i]['nombre'],lista[i]['descripcion'],lista[i]['fechaCreacion'])
+            aux.append(comi)
+        return aux
+    
     
         

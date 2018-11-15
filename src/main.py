@@ -9,7 +9,8 @@ app = webapp2.WSGIApplication([
         ('/delete/([\d]+)', views.DeleteComic),
         ('/ordenAlfabetico',views.OrdenAlfabetico),
         ('/ordenFecha',views.OrdenFecha),
-        ('/buscarNombre', views.BuscarNombre)
+        ('/buscarNombre', views.BuscarNombre),
+        ('/buscarFechaMayor', views.BuscarFechaMayor)
         ],
         debug=True)
 
