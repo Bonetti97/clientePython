@@ -22,3 +22,8 @@ class ControllerEntrega(object):
     def deleteEntrega(self,entrega):
         self.client.service.remove(entrega)
     def editEntrega(self, entrega, nuevoNombre):
+        self.client.service.editEntrega(self,entrega,nuevoNombre)
+    def findByDate(self):
+        self.client.service.findByFechaDescc()
+    def findByTamano(self):
+        self.client.service.findByTamano();  
