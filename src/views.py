@@ -33,7 +33,6 @@ class AddComic(BaseHandler):
         self.render_template('newComic.html', {})
     
     def post(self):
-        print self.request.get('nombreComic')
         Controller().addComic(self.request.get('nombreComic'), 
                               self.request.get('descripcionComic'))
         return webapp2.redirect('/')

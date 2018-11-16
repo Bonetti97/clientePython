@@ -3,15 +3,14 @@
 
 <div class="row">
     <div class="col-lg-12 text-center">
-        <h1>Comics <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></h1>
+        <h1>Entregas de Comic <span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></h1>
 
     </div>
 </div>
 <br/>
 
- <form class="form-horizontal" role="form" action="/newComic" method="get">
-
-                        <button class="btn btn-warning">Crear Comic </button><hr/>
+ <form class="form-horizontal" role="form" action="/newEntrega/{{ comicID }}" method="get">
+                        <button class="btn btn-warning">Crear Entrega</button><hr/>
                     </form>
 
     <span style="margin-left: 5px;" class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
@@ -19,7 +18,7 @@
 <br/>
 <br/>
 
-{% if listaComic|length > 0 %}
+{% if listaEntregas|length > 0 %}
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
@@ -60,19 +59,15 @@
         <table class="table">
             <thead>
             	<th> Nombre </th>
-            	<th> Descripcion </th>
             	<th> Fecha de creacion </th> 
             </thead>
             <tbody>
-            {% for comic in listaComic %}
+            {% for entrega in listaEntregas %}
             <tr>
-                <td>{{ comic.nombre }}</td>
-                <td>{{ comic.descripcion }}</td>
-                <td>{{ comic.fechaCreacion.strftime('%Y-%m-%d') }}</td>
-                <td>{{ comic.listaEntrega|length}}</td>
-                <td><a class="btn btn-warning" href="/editarComic/{{ comic.idComic }}">Editar </a></td>
-                <td> <a class="btn btn-danger" href ="/delete/{{ comic.idComic }}">Eliminar</a></td>
-                <td><a class="btn btn-warning" href="/entregasComic/{{ comic.idComic }}">Ver entregas</a></td>
+                <td>{{ entrega.nombre }}</td>
+                <td>{{ entrega.fechaCreacion.strftime('%Y-%m-%d') }}</td>
+                <td><a class="btn btn-warning" href="/editarComic/{{ entrega.idComic }}">Editar </a></td>
+                <td> <a class="btn btn-danger" href ="/delete/{{ entrega.idComic }}">Eliminar</a></td>
             </tr>
             {% endfor %}
             </tbody>

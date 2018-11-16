@@ -18,13 +18,40 @@ class ControllerEntrega(object):
             return None
 
     def addEntrega(self,nombre,archivo,idComic):
-        self.client.service.addEntrega(self,nombre,archivo,idComic)
+        self.client.service.addEntrega(nombre,archivo,idComic)
     def deleteEntrega(self,entrega):
         self.client.service.remove(entrega)
     def editEntrega(self, entrega, nuevoNombre):
-        self.client.service.editEntrega(self,entrega,nuevoNombre)
+        self.client.service.editEntrega(entrega,nuevoNombre)
+        
+    def listEntregas(self):
+        aux = []
+        lista = self.client.service.findAll();
+        for i in range(len(lista)):
+            ent = entrega.Entrega(lista[i]['idEntrega'],lista[i]['nombre'],lista[i]['archivo'],lista[i]['fechaCreacion'],lista[i]['idComic'])
+            aux.append(ent)
+        return aux
+            
     def findByDate(self):
-        self.client.service.findByFechaDescc()
+        aux = []
+        lista = self.client.service.findByFechaDescc()
+        for i in range(len(lista)):
+            ent = entrega.Entrega(lista[i]['idEntrega'],lista[i]['nombre'],lista[i]['archivo'],lista[i]['fechaCreacion'],lista[i]['idComic'])
+            aux.append(ent)
+        return aux
     def findByTamano(self):
-        self.client.service.findByTamano();  
-    def 
+        aux = []
+        lista = self.client.service.findByTamano();  
+        for i in range(len(lista)):
+            ent = entrega.Entrega(lista[i]['idEntrega'],lista[i]['nombre'],lista[i]['archivo'],lista[i]['fechaCreacion'],lista[i]['idComic'])
+            aux.append(ent)
+        return aux
+    def filtrarPorFecha(self,fecha):
+        aux = []
+        lista = self.client.service.filtrarPorFecha(fecha);  
+        for i in range(len(lista)):
+            ent = entrega.Entrega(lista[i]['idEntrega'],lista[i]['nombre'],lista[i]['archivo'],lista[i]['fechaCreacion'],lista[i]['idComic'])
+            aux.append(ent)
+        return aux
+    
+    
