@@ -27,3 +27,4 @@ class ControllerEntrega(object):
         self.client.service.findByFechaDescc()
     def findByTamano(self):
         self.client.service.findByTamano();  
+    def 
