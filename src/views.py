@@ -82,6 +82,7 @@ class OrdenEntregas(BaseHandler):
         self.render_template('comics.html', {'listaComic': cos})
 
 
+
         
         
         

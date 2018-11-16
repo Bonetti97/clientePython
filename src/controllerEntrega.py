@@ -10,7 +10,7 @@ class ControllerEntrega(object):
     client.options.cache.clear()
     
     def findEntrega(self, idEnt):
-        e = self.client.service.find(idEnt);
+        e = self.client.service.findID(idEnt);
         if e:
             en = entrega.Entrega(e['idEntrega'],e['nombre'],e['archivo'],e['fechaCreacion'],e['idComic'])
             return en
@@ -31,14 +31,23 @@ class ControllerEntrega(object):
             ent = entrega.Entrega(lista[i]['idEntrega'],lista[i]['nombre'],lista[i]['archivo'],lista[i]['fechaCreacion'],lista[i]['idComic'])
             aux.append(ent)
         return aux
-            
-    def findByDate(self):
+    
+    def listEntregasNombreInverso(self,comic):
         aux = []
-        lista = self.client.service.findByFechaDescc()
+        lista = self.client.service.orderInversoNombre(comic);
         for i in range(len(lista)):
             ent = entrega.Entrega(lista[i]['idEntrega'],lista[i]['nombre'],lista[i]['archivo'],lista[i]['fechaCreacion'],lista[i]['idComic'])
             aux.append(ent)
         return aux
+            
+    def findByDate(self, idComic):
+        aux = []
+        lista = self.client.service.findByFechaDesc(idComic)
+        for i in range(len(lista)):
+            ent = entrega.Entrega(lista[i]['idEntrega'],lista[i]['nombre'],lista[i]['archivo'],lista[i]['fechaCreacion'],lista[i]['idComic'])
+            aux.append(ent)
+        return aux
+    
     def findByTamano(self):
         aux = []
         lista = self.client.service.findByTamano();  
@@ -46,9 +55,10 @@ class ControllerEntrega(object):
             ent = entrega.Entrega(lista[i]['idEntrega'],lista[i]['nombre'],lista[i]['archivo'],lista[i]['fechaCreacion'],lista[i]['idComic'])
             aux.append(ent)
         return aux
-    def filtrarPorFecha(self,fecha):
+    
+    def filtrarPorFecha(self,fecha,comic):
         aux = []
-        lista = self.client.service.filtrarPorFecha(fecha);  
+        lista = self.client.service.filtrarPorFecha(fecha,comic);  
         for i in range(len(lista)):
             ent = entrega.Entrega(lista[i]['idEntrega'],lista[i]['nombre'],lista[i]['archivo'],lista[i]['fechaCreacion'],lista[i]['idComic'])
             aux.append(ent)

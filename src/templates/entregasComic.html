@@ -9,9 +9,6 @@
 </div>
 <br/>
 
- <form class="form-horizontal" role="form" action="/newEntrega/{{ comicID }}" method="get">
-                        <button class="btn btn-warning">Crear Entrega</button><hr/>
-                    </form>
 
     <span style="margin-left: 5px;" class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
 </a>
@@ -19,41 +16,27 @@
 <br/>
 
 {% if listaEntregas|length > 0 %}
+ <form class="form-horizontal" role="form" action="/newEntrega/{{ listaEntregas[0].idComic.idComic }}" method="get">
+                        <button class="btn btn-warning">Crear Entrega</button><hr/>
+                    </form>
 <div class="row">
     <div class="col-md-2"></div>
     <div class="col-md-8">
-        <form class="form-horizontal" role="form" action="/ordenAlfabetico" method="get">
+        <form class="form-horizontal" role="form" action="/ordenFechaEntrega/{{ listaEntregas[0].idComic.idComic }}" method="get">
 
-                        <button class="btn btn-warning">Orden Alfabetico </button><hr/>
+                        <button class="btn btn-warning">Ordena por Antig&uuml;edad </button><hr/>
                     </form>
                     
-                     <form class="form-horizontal" role="form" action="/buscarNumEntregas" method="get">
-
-                        <button class="btn btn-warning">Orden Numero Entregas </button><hr/>
-                    </form>
-                    
-      <form class="form-horizontal" role="form" action="/buscarFechaMayor" method="get">
+                    <form class="form-horizontal" role="form" action="/buscarFechaMayor/{{listaEntregas[0].idComic.idComic}}" method="get">
                 <div class="col-sm-6">
-                    <input type="date" class="form-control" name="busquedaFechaMayor" id="busquedaFechaMayor"
+                    <input type="date" class="form-control" name="busquedaFechaMayorEntrega" id="busquedaFechaMayorEntrega"
                            placeholder="fecha">
                 </div>
                 <button type="submit" value="submit" class="btn btn-warning" >Buscar por Fecha Mayor que</button>
+</form>
 
-        </form>
-               
-<form class="form-horizontal" role="form" action="/buscarNombre" method="get">
-                <div class="col-sm-6">
-                    <input type="text" class="form-control" name="busquedaNombre" id="busquedaNombre"
-                           placeholder="nombre">
-                </div>
-                <button type="submit" value="submit" class="btn btn-warning" >Buscar por Nombre</button>
-
-        </form>
-
-                        <form class="form-horizontal" role="form" action="/ordenFecha" method="get">
-
-
-                        <button class="btn btn-warning">Orden Fecha </button>
+                        <form class="form-horizontal" role="form" action="/ordenNombreInverso/{{listaEntregas[0].idComic.idComic}}" method="get">
+                        <button class="btn btn-warning">Orden Nombre Inverso </button>
                                 </form>
 
         <table class="table">
@@ -67,7 +50,7 @@
                 <td>{{ entrega.nombre }}</td>
                 <td>{{ entrega.fechaCreacion.strftime('%Y-%m-%d') }}</td>
                 <td><a class="btn btn-warning" href="/editarComic/{{ entrega.idComic }}">Editar </a></td>
-                <td> <a class="btn btn-danger" href ="/delete/{{ entrega.idComic }}">Eliminar</a></td>
+                <td> <a class="btn btn-danger" href ="/deleteEntrega/{{ entrega.idEntrega }}">Eliminar</a></td>
             </tr>
             {% endfor %}
             </tbody>
@@ -76,11 +59,14 @@
     <div class="col-md-2"></div>
 </div>
 {% else %}
+ <form class="form-horizontal" role="form" action="/newEntrega/{{ comicID }}" method="get">
+                        <button class="btn btn-warning">Crear Entrega</button><hr/>
+                    </form>
 <div class="row">
     <div class="col-lg-12 text-center">
         <div class="col-md-3"></div>
         <div class="col-md-6 bg-warning warning_mesagge">
-            <label>No existen comics todav&iacute;a.</label>
+            <label>No existen entregas todav&iacute;a.</label>
         </div>
         <div class="col-md-3"></div>
 
