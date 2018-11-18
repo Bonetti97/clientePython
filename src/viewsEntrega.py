@@ -4,6 +4,7 @@ import jinja2
 from controllerEntrega import ControllerEntrega
 from controller import Controller
 import cgi
+from encodings.base64_codec import base64_decode
 
 TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_environment = \
@@ -33,7 +34,10 @@ class AddEntrega(BaseHandler):
         self.render_template('newEntrega.html', {'comicID':comicID})
     
     def post(self,comicID):
-        ControllerEntrega().addEntrega(self.request.get('nombreEntrega'),"hola",comicID)
+        print self.request.get('archivoEntrega')
+        ControllerEntrega().addEntrega(self.request.get('nombreEntrega'),self.request.get('archivoEntrega'),comicID)
+    
+       
         #archivo = self.request.POST.get("archivoEntrega",None);
         #if isinstance(archivo, cgi.FieldStorage):
          #   file_name = archivo.filename
@@ -80,7 +84,7 @@ class BuscarFechaMayorEntrega(BaseHandler):
         lista=ControllerEntrega().filtrarPorFecha(fecha,comic)
         self.render_template('entregasComic.html', {'listaEntregas':lista})
         
-        
+
         
         
         

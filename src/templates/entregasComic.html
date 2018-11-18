@@ -22,7 +22,7 @@
 {% endif %}
 
 
-
+{% if listaEntregas |length > 0 %}
 
 <div class="container align-items-center">
 	<div class="d-flex flex-row-reverse pt-3 pb-2 mb-3 border-bottom">
@@ -63,7 +63,7 @@
 				<button class="btn btn-primary">Orden Nombre Inverso</button>
 			</form>
 		</div>
-		{% if listaEntregas |length > 0 %}
+		
 		<div class="table-resposive">
 			<table class="table">
 				<thead class="thead-dark">
