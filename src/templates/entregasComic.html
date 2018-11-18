@@ -70,7 +70,7 @@
 					<tr>
 						<th scope="col">Nombre</th>
 						<th scope="col">Fecha de creacion</th>
-						<th></th>
+						<th scope="col">Entrega</th>
 						<th></th>
 					</tr>
 				</thead>
@@ -79,6 +79,7 @@
 					<tr>
 						<td>{{ entrega.nombre }}</td>
 						<td>{{ entrega.fechaCreacion.strftime('%Y-%m-%d') }}</td>
+                                                <td><img src="data:image/png;base64,{{ entrega.archivo }}" style="width:100px; height: 100px;" /></td>
 						<td><a class="btn btn-warning"
 							href="/editarComic/{{ entrega.idComic }}">Editar </a></td>
 						<td><a class="btn btn-danger"

@@ -64,4 +64,8 @@ class ControllerEntrega(object):
             aux.append(ent)
         return aux
     
+    def getFoto(self,idEntrega):
+        foto=self.client.service.getFoto(idEntrega)
+        return foto
+    
     

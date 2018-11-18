@@ -80,3 +80,7 @@ class BuscarFechaMayorEntrega(BaseHandler):
         lista=ControllerEntrega().filtrarPorFecha(fecha,comic)
         self.render_template('entregasComic.html', {'listaEntregas':lista})
         
+        
+        
+        
+        
