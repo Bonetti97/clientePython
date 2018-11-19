@@ -3,8 +3,7 @@ import webapp2
 import jinja2
 from controllerEntrega import ControllerEntrega
 from controller import Controller
-import cgi
-from encodings.base64_codec import base64_decode
+import base64
 
 TEMPLATE_DIR = os.path.join(os.path.dirname(__file__), 'templates')
 jinja_environment = \
@@ -34,11 +33,13 @@ class AddEntrega(BaseHandler):
         self.render_template('newEntrega.html', {'comicID':comicID})
     
     def post(self,comicID):
-        archivo = self.request.POST.get("archivoEntrega");
-        ControllerEntrega().addEntrega(self.request.get('nombreEntrega'),archivo.file,comicID)
+        archivo = self.request.POST.get("archivoEntrega")
+        imgenc = base64.encodestring(archivo.file.read())
+        ControllerEntrega().addEntrega(self.request.get('nombreEntrega'),imgenc,comicID)
         return webapp2.redirect('/entregasComic/'+comicID);     
-    
-        
+   
+     
+       
 class EditEntrega(BaseHandler):
     def get(self, entregaID):      
         en = ControllerEntrega().findEntrega(entregaID)
