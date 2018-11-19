@@ -15,6 +15,7 @@ app = webapp2.WSGIApplication([
         ('/buscarNumEntregas', views.OrdenEntregas),
         ('/entregasComic/([\d]+)',viewsEntrega.showEntregasComic),
         ('/newEntrega/([\d]+)',viewsEntrega.AddEntrega),
+        ('/editarEntrega/([\d]+)',viewsEntrega.EditEntrega),
         ('/deleteEntrega/([\d]+)', viewsEntrega.DeleteEntrega),
         ('/ordenFechaEntrega/([\d]+)', viewsEntrega.OrdenaFechaDesc),
         ('/buscarFechaMayor/([\d]+)', viewsEntrega.BuscarFechaMayorEntrega),
