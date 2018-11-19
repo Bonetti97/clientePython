@@ -34,20 +34,8 @@ class AddEntrega(BaseHandler):
         self.render_template('newEntrega.html', {'comicID':comicID})
     
     def post(self,comicID):
-        print self.request.get('archivoEntrega')
-        ControllerEntrega().addEntrega(self.request.get('nombreEntrega'),self.request.get('archivoEntrega'),comicID)
-    
-       
-        #archivo = self.request.POST.get("archivoEntrega",None);
-        #if isinstance(archivo, cgi.FieldStorage):
-         #   file_name = archivo.filename
-          #  file_data = archivo.file.read
-            
-        # he estado probando muchas cosas, buscando sobre cual es el tipo del archivo que cogemos.
-        #He encontrado que es FieldStorage pero no consigo pasarlo para que java lo lea.
-        #ave si lo conseguis.
-        
-        #ControllerEntrega().addEntrega(self.request.get('nombreEntrega'),,comicID)
+        archivo = self.request.POST.get("archivoEntrega");
+        ControllerEntrega().addEntrega(self.request.get('nombreEntrega'),archivo.file,comicID)
         return webapp2.redirect('/entregasComic/'+comicID);     
     
         
