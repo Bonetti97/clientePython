@@ -48,7 +48,7 @@ class EditEntrega(BaseHandler):
     def post(self,entregaID):
         nombre = self.request.get('nombreEntrega')
         entregaAux=ControllerEntrega().findEntrega(entregaID)
-        ControllerEntrega().editComic(entregaID, nombre);
+        ControllerEntrega().editEntrega(entregaID, nombre);
         return webapp2.redirect('/entregasComic/'+str(entregaAux.idComic.idComic))
     
 class DeleteEntrega(BaseHandler):
