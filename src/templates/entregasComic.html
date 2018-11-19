@@ -63,7 +63,7 @@
 				<button class="btn btn-primary">Orden Nombre Inverso</button>
 			</form>
 		</div>
-		
+
 		<div class="table-resposive">
 			<table class="table">
 				<thead class="thead-dark">
@@ -71,7 +71,7 @@
 						<th scope="col">Nombre</th>
 						<th scope="col">Fecha de creacion</th>
 						<th scope="col">Entrega</th>
-						<th></th>
+						<th scope="col"></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -79,9 +79,9 @@
 					<tr>
 						<td>{{ entrega.nombre }}</td>
 						<td>{{ entrega.fechaCreacion.strftime('%Y-%m-%d') }}</td>
-                                                <td><img src="data:image/png;base64,{{ entrega.archivo }}" style="width:100px; height: 100px;" /></td>
+            <td><img src="data:image/png;base64,{{ entrega.archivo }}" style="width:100px; height: 100px;" /></td>
 						<td><a class="btn btn-warning"
-							href="/editarComic/{{ entrega.idComic }}">Editar </a></td>
+							href="/editarEntrega/{{entrega.idEntrega}}">Editar </a></td>
 						<td><a class="btn btn-danger"
 							href="/deleteEntrega/{{ entrega.idEntrega }}">Eliminar</a></td>
 					</tr>
@@ -102,7 +102,7 @@
 	</div>
 </div>
 
-<!-- 
+<!--
     <span style="margin-left: 5px;" class="glyphicon glyphicon-list-alt" aria-hidden="true"></span>
 </a>
 <br/>
@@ -116,7 +116,7 @@
 
                         <button class="btn btn-warning">Ordena por Antig&uuml;edad </button><hr/>
                     </form>
-                    
+
                     <form class="form-horizontal" role="form" action="/buscarFechaMayor/{{listaEntregas[0].idComic.idComic}}" method="get">
                 <div class="col-sm-6">
                     <input type="date" class="form-control" name="busquedaFechaMayorEntrega" id="busquedaFechaMayorEntrega"
@@ -132,7 +132,7 @@
         <table class="table">
             <thead>
             	<th> Nombre </th>
-            	<th> Fecha de creacion </th> 
+            	<th> Fecha de creacion </th>
             </thead>
             <tbody>
             {% for entrega in listaEntregas %}
