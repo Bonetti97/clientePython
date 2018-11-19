@@ -10,7 +10,8 @@ class ControllerEntrega(object):
     client.options.cache.clear()
     
     def findEntrega(self, idEnt):
-        e = self.client.service.findID(idEnt);
+        print idEnt
+        e = self.client.service.find(idEnt);
         if e:
             en = entrega.Entrega(e['idEntrega'],e['nombre'],e['archivo'],e['fechaCreacion'],e['idComic'])
             return en
