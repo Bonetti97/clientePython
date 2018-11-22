@@ -6,11 +6,16 @@ import viewsTest
 app = webapp2.WSGIApplication([
         ('/',viewsTest.showComics),
         ('/nuevoComic',viewsTest.AddComic),
+        ('/nuevaEntrega',viewsTest.AddEntrega),
         ('/editarComic',viewsTest.EditComic),
+        ('/editarEntrega',viewsTest.EditEntrega),
         ('/eliminarComic',viewsTest.DeleteComic),
+        ('/eliminarEntrega',viewsTest.DeleteEntrega),
         ('/ordenFecha',viewsTest.OrdenFecha),
         ('/buscarNumEntregas', viewsTest.OrdenEntregas),
-        ('/buscarFechaMayor', viewsTest.BuscarFechaMayor)
+        ('/buscarFechaMayor', viewsTest.BuscarFechaMayor),
+        ('/buscarNombre', viewsTest.BuscarNombre)
+        
         ],
         debug=True)
 

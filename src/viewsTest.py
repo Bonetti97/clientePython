@@ -1,7 +1,9 @@
 import os
 import webapp2
 import jinja2
+import base64
 from controller import Controller
+from controllerEntrega import ControllerEntrega
 
 
 
@@ -26,7 +28,8 @@ class BaseHandler(webapp2.RequestHandler):
 class showComics(BaseHandler):
     def get(self):     
         cos = Controller().listComics()   
-        self.render_template('test.html', {'listaComic': cos})
+        ent = ControllerEntrega().listEntregas()
+        self.render_template('test.html', {'listaComic': cos,'listaEntregas': ent})
         
 class AddComic(BaseHandler):
     def get(self):
@@ -82,14 +85,47 @@ class OrdenEntregas(BaseHandler):
     def get(self):
         cos=Controller().listaNumEntregas();
         self.render_template('test.html', {'listaComic': cos})
+        
+class AddEntrega(BaseHandler):
+    def get(self,comicID):
+        self.render_template('newEntrega.html', {'comicID':comicID})
+    
+    def post(self):
+        id=self.request.get('idComic')
+        archivo = self.request.POST.get("archivoEntrega")
+        imgenc = base64.encodestring(archivo.file.read())
+        ControllerEntrega().addEntrega(self.request.get('nombreEntrega'),imgenc,id)
+        return webapp2.redirect('/')
+          
+class DeleteEntrega(BaseHandler):
+    def get(self):
+        id=self.request.get('idEntrega')
+        ControllerEntrega().deleteEntrega(id)
+        return webapp2.redirect('/')
+    
+class EditEntrega(BaseHandler):     
+    def get(self): 
+        id=self.request.get('idEntrega')
+        nombre = self.request.get('nombreEntrega')
+        ControllerEntrega().editEntrega(id, nombre);
+        return webapp2.redirect('/')
+    
+class OrdenaFechaDesc(BaseHandler):
+    def get(self):
+        comic = self.request.get('idComic')
+        lista=ControllerEntrega().findByDate(comic)
+        self.render_template('entregasComic.html', {'listaEntregas':lista})
 
+class OrdenNombreInverso(BaseHandler):
+    def get(self, comic):
+        lista=ControllerEntrega().listEntregasNombreInverso(comic)
+        self.render_template('entregasComic.html', {'listaEntregas':lista})
 
-
-        
-        
-        
-        
-        
+class BuscarFechaMayorEntrega(BaseHandler):
+    def get(self,comic):
+        fecha=self.request.get('busquedaFechaMayorEntrega')
+        lista=ControllerEntrega().filtrarPorFecha(fecha,comic)
+        self.render_template('entregasComic.html', {'listaEntregas':lista})       
         
         
         
