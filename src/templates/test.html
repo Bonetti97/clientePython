@@ -6,6 +6,10 @@
 </head>
 <body>
 
+<form action ="/" method="get">
+		<button type="submit" value="submit">REINICIAR LISTAS</button>
+	</form>
+
 	<h1>Lista Comics</h1>
 	<form class="form-horizontal" role="form" action="/ordenFecha"
 		method="get">
@@ -86,9 +90,7 @@
 	<hr />
 	<hr />
 	<h1>Lista Entregas</h1>
-	<form action ="/" method="get">
-		<button type="submit" value="submit">Todas</button>
-	</form>
+	
 	
 	<form class="form-inline" role="form"
 					action="/buscarFechaMayorEntrega" method="get">
@@ -132,7 +134,8 @@
 				<th>Nombre</th>
 				<th>Fecha de creacion</th>
 				<th>Entrega</th>
-				<th>Comic</th>
+				<th>idComic</th>
+				<th>NombreComic</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -143,6 +146,7 @@
 				<td>{{ entrega.fechaCreacion.strftime('%Y-%m-%d') }}</td>
 				<td><img src="data:image/png;base64,{{ entrega.archivo }}"
 					style="width: 100px; height: 100px;" /></td>
+				<td>{{ entrega.idComic.idComic }}</td>
 				<td>{{ entrega.idComic.nombre }}</td>
 			</tr>
 			{% endfor %}
@@ -157,9 +161,10 @@
 			id="idComic" required> <label for="inputText"
 			class="control-label">Nombre: </label> <input type="text"
 			name="nombreEntrega" id="nombreEntrega" placeholder="text" required>
-		<label> Archivo <input type="file" accept="image/*"
-			style="display: none;" name="archivoEntrega" id="archivoEntrega">
-		</label> <span style="margin-right: 10px;"></span>
+				
+			<label> Archivo <input type="file" accept="image/*"
+				style="width:200px" name="archivoEntrega" id="archivoEntrega">
+			</label>
 
 		<button type="submit" value="submit">Crear</button>
 

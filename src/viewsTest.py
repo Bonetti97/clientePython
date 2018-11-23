@@ -77,7 +77,6 @@ class BuscarNombre(BaseHandler):
 class BuscarFechaMayor(BaseHandler):
     def get(self):
         fecha=self.request.get('busquedaFechaMayor')
-        print fecha
         cos=Controller().listaFechaMayor(fecha)
         self.render_template('test.html', {'listaComic': cos})
         
