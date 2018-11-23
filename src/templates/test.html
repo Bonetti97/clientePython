@@ -33,6 +33,7 @@
 	<table class="table">
 		<thead>
 			<tr>
+				<th>id</th>
 				<th>Nombre</th>
 				<th>Descripcion</th>
 				<th>Fecha de creacion</th>
@@ -42,6 +43,7 @@
 		<tbody>
 			{% for comic in listaComic %}
 			<tr>
+				<td>{{ comic.idComic }}</td>
 				<td>{{ comic.nombre }}</td>
 				<td>{{ comic.descripcion }}</td>
 				<td>{{ comic.fechaCreacion.strftime('%Y-%m-%d') }}</td>
@@ -84,21 +86,44 @@
 	<hr />
 	<hr />
 	<h1>Lista Entregas</h1>
+	<form action ="/" method="get">
+		<button type="submit" value="submit">Todas</button>
+	</form>
 	
-	<h3>Buscar Por Fecha</h3>
-	<form class="form-inline" role="form" action="/buscarFechaMayor"
-		method="get">
-		<input type="date" class="form-control" name="busquedaFechaMayor"
-			id="busquedaFechaMayor" placeholder="fecha"></input>
-		<button type="submit" value="submit">Buscar</button>
+	<form class="form-inline" role="form"
+					action="/buscarFechaMayorEntrega" method="get">
+			<label for="inputText">IdComic:</label> <input type="text"
+				class="form-control" placeholder="idComic" name="idComic"
+				id="idComic" required> 		
+			<input type="date" class="form-control"
+				name="busquedaFechaMayorEntrega" id="busquedaFechaMayorEntrega"
+				placeholder="fecha">
+				<button type="submit" value="submit">Buscar por Fecha Mayor que</button>
 	</form>
-	<h3>Buscar Por Nombre</h3>
-	<form class="form-inline" role="form" action="/buscarNombre"
-		method="get">
-		<input type="text" name="busquedaNombre" id="busquedaNombre"
-			placeholder="nombre"></input>
-		<button type="submit" value="submit">Buscar</button>
-	</form>
+	
+	
+	
+	<div>
+		<form class="form-horizontal" role="form"
+			action="/ordenFechaEntrega"
+			method="get">
+			<label for="inputText"> IdComic:</label> <input type="text"
+				class="form-control" placeholder="idComic" name="idComic"
+				id="idComic" required> 
+				<button>Ordena por Antig&uuml;edad</button>
+		</form>
+		
+		<form class="form-horizontal" role="form"
+			action="/ordenNombreInverso"
+			method="get">
+			<label for="inputText"> IdComic:</label> <input type="text"
+				class="form-control" placeholder="idComic" name="idComic"
+				id="idComic" required> 	
+			<button>Orden Nombre Inverso</button>
+		</form>
+	</div>
+	
+	
 	
 	<table class="table">
 		<thead class="thead-dark">

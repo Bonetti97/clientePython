@@ -114,18 +114,20 @@ class OrdenaFechaDesc(BaseHandler):
     def get(self):
         comic = self.request.get('idComic')
         lista=ControllerEntrega().findByDate(comic)
-        self.render_template('entregasComic.html', {'listaEntregas':lista})
+        self.render_template('test.html', {'listaEntregas': lista})
 
 class OrdenNombreInverso(BaseHandler):
-    def get(self, comic):
+    def get(self):
+        comic = self.request.get('idComic')
         lista=ControllerEntrega().listEntregasNombreInverso(comic)
-        self.render_template('entregasComic.html', {'listaEntregas':lista})
+        self.render_template('test.html', {'listaEntregas': lista})
 
 class BuscarFechaMayorEntrega(BaseHandler):
-    def get(self,comic):
+    def get(self):
         fecha=self.request.get('busquedaFechaMayorEntrega')
+        comic = self.request.get('idComic');
         lista=ControllerEntrega().filtrarPorFecha(fecha,comic)
-        self.render_template('entregasComic.html', {'listaEntregas':lista})       
+        self.render_template('test.html', {'listaEntregas': lista})      
         
         
         

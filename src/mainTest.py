@@ -14,6 +14,9 @@ app = webapp2.WSGIApplication([
         ('/ordenFecha',viewsTest.OrdenFecha),
         ('/buscarNumEntregas', viewsTest.OrdenEntregas),
         ('/buscarFechaMayor', viewsTest.BuscarFechaMayor),
+        ('/buscarFechaMayorEntrega',viewsTest.BuscarFechaMayorEntrega),
+        ('/ordenFechaEntrega',viewsTest.OrdenaFechaDesc),
+        ('/ordenNombreInverso',viewsTest.OrdenNombreInverso),
         ('/buscarNombre', viewsTest.BuscarNombre)
         
         ],
